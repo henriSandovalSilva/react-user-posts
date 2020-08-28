@@ -8,8 +8,8 @@ import Posts from '../pages/Posts';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/login" exact component={Login} />
-    <Route path="/home" component={Home} />
-    <Route path="/posts" component={Posts} />
+    <Route path="/home/:companyName" component={Home} />
+    <Route path="/posts/:userId/:userName" component={Posts} />
   </Switch>
 );
 

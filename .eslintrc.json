@@ -27,7 +27,7 @@
   ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off",
     "react/jsx-filename-extension": [
       1,
       {
@@ -37,7 +37,8 @@
       }
     ],
     "import/prefer-default-export": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "no-console": "off"
   },
   "settings": {
     "import/resolver": {

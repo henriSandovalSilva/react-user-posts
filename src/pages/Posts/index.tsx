@@ -1,36 +1,106 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
+import api from '../../services/api';
+
 import { Container, Title, Post } from './styles';
 
 import userIcon from '../../assets/user.svg';
 
-const Home: React.FC = () => (
-  <Container>
-    <Title>
-      Posts de Leanne Graham
-    </Title>
+interface Address {
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  geo: AddressGeo;
+}
 
-    <button type="submit">
-      <ArrowBackIcon style={{ color: '#3a3a3a' }} />
-      Voltar
-    </button>
+interface AddressGeo {
+  lat: string;
+  lng: string;
+}
 
-    <Post>
-      <div>
-        <img src={userIcon} alt="Imagem do funcionário" width="20px" />
-        <h2>Leanne Graham</h2>
-      </div>
-      <h1>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</h1>
+interface Company {
+  name: string;
+  catchPhrase: string;
+  bs: string;
+}
 
-      <p>
-        quia et suscipit \n
-        suscipit recusandae consequuntur expedita et cum\n
-        reprehenderit molestiae ut ut quas totam\n
-        nostrum rerum est autem sunt rem eveniet architecto
-      </p>
-    </Post>
-  </Container>
-);
+interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: Address;
+  phone: string;
+  website: string;
+  company: Company;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+}
+
+interface UserPost {
+  post: Post,
+  user: User
+}
+
+const Home: React.FC = () => {
+  const history = useHistory();
+  const { userId, userName } = useParams();
+
+  const [userPosts, setUserPosts] = useState<UserPost[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await api.get<UserPost[]>(`users/${userId}/posts`);
+        setUserPosts([...response.data]);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    fetchData();
+  }, [userId]);
+
+  const handleClickBackButton = () => {
+    history.goBack();
+  };
+
+  return (
+    <Container>
+      <Title>
+        Posts de
+        {' '}
+        {userName}
+      </Title>
+
+      <button type="submit" onClick={handleClickBackButton}>
+        <ArrowBackIcon style={{ color: '#3a3a3a' }} />
+        Voltar
+      </button>
+
+      {userPosts.map((userPost) => (
+        <Post>
+          <div>
+            <img src={userIcon} alt="Imagem do funcionário" width="20px" />
+            <h2>{userPost.user.name}</h2>
+          </div>
+
+          <h1>{userPost.post.title}</h1>
+
+          <p>{userPost.post.body}</p>
+        </Post>
+      ))}
+
+    </Container>
+  );
+};
 
 export default Home;

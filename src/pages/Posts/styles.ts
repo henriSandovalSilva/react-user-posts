@@ -56,6 +56,8 @@ export const Post = styled.div`
 
   box-shadow: 0px 4px 10px ${shade(0.1, '#F0F0F5')};
 
+  margin-bottom: 15px;
+
   div {
     display: flex;
     align-items: center;

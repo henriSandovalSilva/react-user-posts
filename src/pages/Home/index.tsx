@@ -3,39 +3,12 @@ import { useParams, useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
-import { Container, Title, Card } from './styles';
+import { Container } from './styles';
 
-import userIcon from '../../assets/user.svg';
+import Title from '../../components/Title';
+import UserCard from '../../components/UserCard';
 
-interface Address {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: string;
-  geo: AddressGeo;
-}
-
-interface AddressGeo {
-  lat: string;
-  lng: string;
-}
-
-interface Company {
-  name: string;
-  catchPhrase: string;
-  bs: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: Address;
-  phone: string;
-  website: string;
-  company: Company;
-}
+import { User } from '../../interfaces/User';
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -65,15 +38,14 @@ const Home: React.FC = () => {
         Lista de funcionários
       </Title>
 
-      {users.map((user) => (
-        <Card key={user.id} onClick={() => handleCardClick(user.id, user.name)}>
-          <div>
-            <img src={userIcon} alt="Imagem do funcionário" width="40px" />
-            <h1>{user.name}</h1>
-          </div>
-          <span>{user.email}</span>
-        </Card>
-      ))}
+      {users.length ? users.map((user) => (
+        <UserCard
+          key={user.id}
+          userName={user.name}
+          userEmail={user.email}
+          onClick={() => handleCardClick(user.id, user.name)}
+        />
+      )) : (<p>Ops! Nenhum funcionário encontrado...</p>)}
     </Container>
   );
 };

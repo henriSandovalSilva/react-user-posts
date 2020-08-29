@@ -1,58 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { useParams } from 'react-router-dom';
 
 import api from '../../services/api';
 
-import { Container, Title, Post } from './styles';
+import { Container } from './styles';
 
-import userIcon from '../../assets/user.svg';
+import Title from '../../components/Title';
+import BackButton from '../../components/BackButton';
+import PostCard from '../../components/PostCard';
 
-interface Address {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: string;
-  geo: AddressGeo;
-}
-
-interface AddressGeo {
-  lat: string;
-  lng: string;
-}
-
-interface Company {
-  name: string;
-  catchPhrase: string;
-  bs: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: Address;
-  phone: string;
-  website: string;
-  company: Company;
-}
-
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-}
-
-interface UserPost {
-  post: Post,
-  user: User
-}
+import { UserPost } from '../../interfaces/UserPost';
 
 const Home: React.FC = () => {
-  const history = useHistory();
   const { userId, userName } = useParams();
 
   const [userPosts, setUserPosts] = useState<UserPost[]>([]);
@@ -69,10 +28,6 @@ const Home: React.FC = () => {
     fetchData();
   }, [userId]);
 
-  const handleClickBackButton = () => {
-    history.goBack();
-  };
-
   return (
     <Container>
       <Title>
@@ -81,23 +36,15 @@ const Home: React.FC = () => {
         {userName}
       </Title>
 
-      <button type="submit" onClick={handleClickBackButton}>
-        <ArrowBackIcon style={{ color: '#3a3a3a' }} />
-        Voltar
-      </button>
+      <BackButton />
 
-      {userPosts.map((userPost) => (
-        <Post>
-          <div>
-            <img src={userIcon} alt="Imagem do funcionário" width="20px" />
-            <h2>{userPost.user.name}</h2>
-          </div>
-
-          <h1>{userPost.post.title}</h1>
-
-          <p>{userPost.post.body}</p>
-        </Post>
-      ))}
+      {userPosts.length ? userPosts.map((userPost) => (
+        <PostCard
+          userName={userPost.user.name}
+          postTitle={userPost.post.title}
+          postBody={userPost.post.body}
+        />
+      )) : (<p>Ops! Nenhum post encontrado...</p>)}
 
     </Container>
   );

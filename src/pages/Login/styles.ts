@@ -9,16 +9,9 @@ export const Container = styled.div`
   height: 70vh;
 `;
 
-export const Title = styled.h1`
-  font-size: 48px;
-
-  color: #3a3a3a;
-`;
-
 export const Form = styled.form`
-  margin-top: 40px;
-
   width: 60%;
+
   @media (max-width: 800px) {
     width: 80%;
   }

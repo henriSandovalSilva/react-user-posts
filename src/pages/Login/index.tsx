@@ -1,7 +1,10 @@
 import React, { useState, ChangeEvent, MouseEvent } from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import { Container, Title, Form } from './styles';
+import { Container, Form } from './styles';
+
+import Title from '../../components/Title';
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -17,6 +20,8 @@ const Login: React.FC = () => {
 
     if (company) {
       history.push(`/home/${company}`);
+    } else {
+      toast.warn('Ops! Você precisa selecionar a empresa.');
     }
   }
 

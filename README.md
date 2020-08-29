@@ -37,8 +37,9 @@ Configure o arquivo .env.example e depois execute:
 
 `yarn build`
 
+<br />
 É necessário colocar os arquivos no build em alguma hospedagem. <br />
-Coloquei o projeto na <b>Netlify</b> [http://usersposts.tech/](http://usersposts.tech/) <br /> <br />
+Coloquei o projeto na <b>Netlify</b> em: [http://usersposts.tech/](http://usersposts.tech/) <br /> <br />
 
 Para testar o projeto localmente:
 

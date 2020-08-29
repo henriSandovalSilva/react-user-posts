@@ -1,13 +1,22 @@
 <h1 align="center">
-    <img alt="Screenshot" title="Screenshot" src="home.png" width="600px" />
+    <img alt="Screenshot" title="Screenshot" src="screenshots/login.png" width="600px" />
+</h1>
+
+<h1 align="center">
+    <img alt="Screenshot" title="Screenshot" src="screenshots/users.png" width="600px" />
+</h1>
+
+<h1 align="center">
+    <img alt="Screenshot" title="Screenshot" src="screenshots/posts.png" width="600px" />
 </h1>
 
 <h2>:rocket: Tecnologias utilizadas</h2>
 <ul>
   <li>React.js</li>
-  <li>Redux & Redux Saga</li>
+  <li>Typescript</li>
   <li>Hooks</li>
-  <li>Reactstrap</li>
+  <li>Axios</li>
+  <li>React Router DOM</li>
   <li>Styled Components</li>
   <li>ESLint + Prettier + EditorConfig</li>
 </ul>

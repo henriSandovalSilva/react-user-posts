@@ -35,7 +35,9 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Title>
-        Lista de funcionários
+        Funcionários de
+        {' '}
+        {companyName}
       </Title>
 
       {users.length ? users.map((user) => (

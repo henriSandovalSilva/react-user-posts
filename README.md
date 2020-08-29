@@ -29,9 +29,18 @@ Uma aplicação React para visualizar post de usuários de determinada empresa.
 
 Depois de seguir as intruções do [backend](https://github.com/henriSandovalSilva/node-user-posts).
 
-Execute no terminal:
+Configure o arquivo .env.example e depois execute:
+
+`cp .env.example .env`
 
 `yarn`<br>
+
+`yarn build`
+
+É necessário colocar os arquivos no build em alguma hospedagem. <br />
+Coloquei o projeto na <b>Netlify</b> [http://usersposts.tech/](http://usersposts.tech/) <br /> <br />
+
+Para testar o projeto localmente:
 
 `yarn start`
 

@@ -16,6 +16,7 @@
   <li>Typescript</li>
   <li>Hooks</li>
   <li>Context API</li>
+  <li>Toastify</li>
   <li>Axios</li>
   <li>React Router DOM</li>
   <li>Styled Components</li>

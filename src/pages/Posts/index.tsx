@@ -5,6 +5,7 @@ import api from '../../services/api';
 
 import { Container } from './styles';
 
+import Header from '../../components/Header';
 import Title from '../../components/Title';
 import BackButton from '../../components/BackButton';
 import PostCard from '../../components/PostCard';
@@ -29,24 +30,27 @@ const Home: React.FC = () => {
   }, [userId]);
 
   return (
-    <Container>
-      <Title>
-        Posts de
-        {' '}
-        {userName}
-      </Title>
+    <>
+      <Header />
+      <Container>
+        <Title>
+          Posts de
+          {' '}
+          {userName}
+        </Title>
 
-      <BackButton />
+        <BackButton />
 
-      {userPosts.length ? userPosts.map((userPost) => (
-        <PostCard
-          userName={userPost.user.name}
-          postTitle={userPost.post.title}
-          postBody={userPost.post.body}
-        />
-      )) : (<p>Ops! Nenhum post encontrado...</p>)}
+        {userPosts.length ? userPosts.map((userPost) => (
+          <PostCard
+            userName={userPost.user.name}
+            postTitle={userPost.post.title}
+            postBody={userPost.post.body}
+          />
+        )) : (<p>Ops! Nenhum post encontrado...</p>)}
 
-    </Container>
+      </Container>
+    </>
   );
 };
 

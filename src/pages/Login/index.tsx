@@ -1,12 +1,17 @@
-import React, { useState, ChangeEvent, MouseEvent } from 'react';
+import React, {
+  useState, useContext, ChangeEvent, MouseEvent,
+} from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
+import { CompanyContext } from '../../context/CompanyContext';
 
 import { Container, Form } from './styles';
 
 import Title from '../../components/Title';
 
 const Login: React.FC = () => {
+  const { updateCompany } = useContext(CompanyContext);
   const history = useHistory();
 
   const [company, setCompany] = useState<string>('');
@@ -19,6 +24,8 @@ const Login: React.FC = () => {
     event.preventDefault();
 
     if (company) {
+      updateCompany(company);
+
       history.push(`/home/${company}`);
     } else {
       toast.warn('Ops! Você precisa selecionar a empresa.');

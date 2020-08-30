@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import api from '../../services/api';
 
 import { Container } from './styles';
 
+import Header from '../../components/Header';
 import Title from '../../components/Title';
 import UserCard from '../../components/UserCard';
 
 import { User } from '../../interfaces/User';
 
 const Home: React.FC = () => {
-  const history = useHistory();
   const { companyName } = useParams();
+  const history = useHistory();
 
   const [users, setUsers] = useState<User[]>([]);
 
@@ -33,22 +34,26 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Container>
-      <Title>
-        Funcionários de
-        {' '}
-        {companyName}
-      </Title>
+    <>
+      <Header />
 
-      {users.length ? users.map((user) => (
-        <UserCard
-          key={user.id}
-          userName={user.name}
-          userEmail={user.email}
-          onClick={() => handleCardClick(user.id, user.name)}
-        />
-      )) : (<p>Ops! Nenhum funcionário encontrado...</p>)}
-    </Container>
+      <Container>
+        <Title>
+          Funcionários de
+          {' '}
+          {companyName}
+        </Title>
+
+        {users.length ? users.map((user) => (
+          <UserCard
+            key={user.id}
+            userName={user.name}
+            userEmail={user.email}
+            onClick={() => handleCardClick(user.id, user.name)}
+          />
+        )) : (<p>Ops! Nenhum funcionário encontrado...</p>)}
+      </Container>
+    </>
   );
 };
 

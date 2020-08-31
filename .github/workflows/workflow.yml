@@ -4,9 +4,6 @@ on:
   push:
     branches: [master]
 
-env:
-  BUCKET: reactdeploy.getomni.dev
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,4 +33,4 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
         source: "build"
-        target: "."
+        target: "/var/www/html/react-users-posts/"

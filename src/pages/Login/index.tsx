@@ -39,8 +39,8 @@ const Login: React.FC = () => {
       </Title>
 
       <Form action="">
-        <input placeholder="Digite o e-mail" />
-        <input placeholder="Digite a senha" />
+        <input placeholder="Digite o e-mail (apenas visual)" />
+        <input placeholder="Digite a senha (apenas visual)" />
 
         <select name="company" id="company" onChange={handleSelectCompany}>
           <option>Selecione a sua empresa</option>

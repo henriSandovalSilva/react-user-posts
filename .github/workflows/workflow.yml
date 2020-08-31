@@ -33,4 +33,4 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
         source: "build/*"
-        target: "/var/www/html/react-users-posts/"
+        target: "/var/www/html/react-user-posts/"

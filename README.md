@@ -42,13 +42,13 @@ Configure o arquivo .env.example e depois execute:
 
 <br />
 É necessário colocar os arquivos do build em alguma hospedagem. <br />
-Coloquei o projeto na <b>Digital Ocean</b> em: [http://usersposts.tech/](http://usersposts.tech/) <br /> <br />
+Coloquei o projeto na <b>Digital Ocean</b> em: http://usersposts.tech/ <br /> <br />
 
 Para testar o projeto localmente:
 
 `yarn start`
 
-O projeto irá executar em: [http://localhost:3000](http://localhost:3000)
+O projeto irá executar em: http://localhost:3000
 
 
 ## :memo: Licença

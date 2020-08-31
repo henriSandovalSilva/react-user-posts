@@ -9,18 +9,18 @@ import Header from '../../components/Header';
 import Title from '../../components/Title';
 import UserCard from '../../components/UserCard';
 
-import { User } from '../../interfaces/User';
+import { IUser } from '../../interfaces/UserInterface';
 
 const Home: React.FC = () => {
   const { companyName } = useParams();
   const history = useHistory();
 
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await api.get<User[]>(`users/${companyName}`);
+        const response = await api.get<IUser[]>(`users/${companyName}`);
         setUsers([...response.data]);
       } catch (e) {
         console.error(e);

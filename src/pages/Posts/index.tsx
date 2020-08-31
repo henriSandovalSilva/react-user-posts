@@ -10,17 +10,17 @@ import Title from '../../components/Title';
 import BackButton from '../../components/BackButton';
 import PostCard from '../../components/PostCard';
 
-import { UserPost } from '../../interfaces/UserPost';
+import { IUserPost } from '../../interfaces/UserPostInterface';
 
 const Home: React.FC = () => {
   const { userId, userName } = useParams();
 
-  const [userPosts, setUserPosts] = useState<UserPost[]>([]);
+  const [userPosts, setUserPosts] = useState<IUserPost[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await api.get<UserPost[]>(`users/${userId}/posts`);
+        const response = await api.get<IUserPost[]>(`users/${userId}/posts`);
         setUserPosts([...response.data]);
       } catch (e) {
         console.error(e);

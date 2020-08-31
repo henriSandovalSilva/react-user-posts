@@ -5,15 +5,15 @@ import { PostCard as PostCardStyled } from './styles';
 
 import userIcon from '../../assets/user.svg';
 
-interface PostCardType {
+interface IPostCardType {
   userName: string,
   postTitle: string,
   postBody: string,
 }
 
-const PostCard: React.FC<PostCardType> = ({
+const PostCard: React.FC<IPostCardType> = ({
   userName, postTitle, postBody,
-}: PostCardType) => (
+}: IPostCardType) => (
   <PostCardStyled>
     <div>
       <img src={userIcon} alt="Imagem do funcionário" width="20px" />

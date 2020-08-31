@@ -32,5 +32,5 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
-        source: "build"
+        source: "build/*"
         target: "/var/www/html/react-users-posts/"

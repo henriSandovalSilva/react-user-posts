@@ -41,8 +41,7 @@ Configure o arquivo .env.example e depois execute:
 `yarn build`
 
 <br />
-É necessário colocar os arquivos do build em alguma hospedagem. <br />
-Coloquei o projeto na <b>Digital Ocean</b> em: http://usersposts.tech/ <br /> <br />
+É necessário colocar os arquivos do build em alguma hospedagem. <br /> <br />
 
 Para testar o projeto localmente:
 
